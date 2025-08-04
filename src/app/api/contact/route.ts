@@ -167,12 +167,20 @@ export async function POST(request: NextRequest) {
 
     while (retryCount <= maxRetries) {
       try {
+        console.log('Sending email with:', {
+          from: process.env.FROM_EMAIL || 'onboarding@resend.dev',
+          to: process.env.CONTACT_EMAIL || 'dinusanth.s@gmail.com',
+          subject: `Contact Form: ${sanitizedData.subject}`,
+        });
+        
         emailResult = await resend.emails.send({
           from: process.env.FROM_EMAIL || 'onboarding@resend.dev',
           to: [process.env.CONTACT_EMAIL || 'dinusanth.s@gmail.com'],
           subject: `Contact Form: ${sanitizedData.subject}`,
           html: createEmailTemplate(sanitizedData, clientIP),
         });
+        
+        console.log('Email result:', emailResult);
         break; // Success, exit retry loop
       } catch (error: unknown) {
         retryCount++;
