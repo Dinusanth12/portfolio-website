@@ -32,10 +32,10 @@ export default function Navigation() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.8, type: "spring" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-300 ${
         isScrolled
-          ? "bg-pale-blue/95 backdrop-blur-md border-b border-sky-blue/40 shadow-xl"
-          : "bg-pale-blue/95 backdrop-blur-md border-b border-sky-blue/40"
+          ? "bg-white/95 backdrop-blur-md border-b border-slate-blue/20 shadow-xl"
+          : "bg-white/95 backdrop-blur-md border-b border-slate-blue/20"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -67,10 +67,17 @@ export default function Navigation() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 + index * 0.1 }}
                 className="text-slate-blue hover:text-royal-blue font-semibold text-lg transition-all duration-300 hover-elegant relative group"
-                              >
-                  {item.label}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-royal-blue to-slate-blue transition-all duration-300 group-hover:w-full"></span>
-                </motion.a>
+                onClick={(e) => {
+                  e.preventDefault();
+                  const element = document.querySelector(item.href);
+                  if (element) {
+                    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }
+                }}
+              >
+                {item.label}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-royal-blue to-slate-blue transition-all duration-300 group-hover:w-full"></span>
+              </motion.a>
             ))}
           </motion.div>
 
@@ -163,7 +170,14 @@ export default function Navigation() {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.2, delay: index * 0.05 }}
-                  onClick={() => setIsOpen(false)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setIsOpen(false);
+                    const element = document.querySelector(item.href);
+                    if (element) {
+                      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                  }}
                   className="block text-slate-blue hover:text-royal-blue font-semibold text-lg py-3 px-4 rounded-xl hover:bg-slate-blue/10 transition-all duration-200"
                   whileHover={{ x: 5 }}
                   whileTap={{ scale: 0.98 }}
