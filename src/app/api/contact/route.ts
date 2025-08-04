@@ -193,15 +193,19 @@ export async function POST(request: NextRequest) {
         
         if (retryCount > maxRetries) {
           // Log the error for debugging but don't expose details to client
+          const errorDetails = typeof error === 'object' 
+            ? JSON.stringify(error) 
+            : String(error);
+          
           logSecurityEvent('RESEND_ALL_ATTEMPTS_FAILED', { 
-            error: errorMessage,
+            error: errorDetails,
             ip: clientIP 
           });
           
           // Return more specific error for debugging
           return NextResponse.json(
             { 
-              error: `Email service error: ${errorMessage}`,
+              error: `Email service error: ${errorDetails}`,
               success: false 
             },
             { status: 503 }
@@ -214,13 +218,17 @@ export async function POST(request: NextRequest) {
     }
 
     if (emailResult?.error) {
+      const errorDetails = typeof emailResult.error === 'object' 
+        ? JSON.stringify(emailResult.error) 
+        : String(emailResult.error);
+      
       logSecurityEvent('RESEND_ERROR', { 
-        error: emailResult.error,
+        error: errorDetails,
         ip: clientIP 
       });
       return NextResponse.json(
         { 
-          error: `Resend API error: ${emailResult.error}`,
+          error: `Resend API error: ${errorDetails}`,
           success: false 
         },
         { status: 503 }
