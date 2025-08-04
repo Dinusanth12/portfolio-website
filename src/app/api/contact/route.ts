@@ -173,11 +173,13 @@ export async function POST(request: NextRequest) {
           subject: `Contact Form: ${sanitizedData.subject}`,
         });
         
+        // Use Outlook email instead of Gmail to avoid domain verification issues
         emailResult = await resend.emails.send({
-          from: process.env.FROM_EMAIL || 'onboarding@resend.dev',
-          to: [process.env.CONTACT_EMAIL || 'dinusanth.s@gmail.com'],
+          from: 'onboarding@resend.dev',
+          to: ['dinusanth.s@outlook.com'], // Changed to Outlook
           subject: `Contact Form: ${sanitizedData.subject}`,
           html: createEmailTemplate(sanitizedData, clientIP),
+          replyTo: sanitizedData.email,
         });
         
         console.log('Email result:', emailResult);
