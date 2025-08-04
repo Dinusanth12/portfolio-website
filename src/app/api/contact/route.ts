@@ -12,9 +12,7 @@ import {
 } from '@/lib/security';
 import { 
   errorHandler, 
-  createErrorResponse, 
-  ErrorType, 
-  ErrorSeverity 
+  createErrorResponse
 } from '@/lib/error-handler';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -99,8 +97,9 @@ export async function POST(request: NextRequest) {
     let body;
     try {
       body = await request.json();
-    } catch (error: any) {
-      logSecurityEvent('INVALID_JSON', { ip: clientIP, error: error?.message || 'Unknown error' });
+    } catch (error: unknown) {
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      logSecurityEvent('INVALID_JSON', { ip: clientIP, error: errorMessage });
       return createErrorResponse(
         errorHandler.handleError(
           new ValidationError('Invalid JSON in request body'),
@@ -174,18 +173,19 @@ export async function POST(request: NextRequest) {
           html: createEmailTemplate(sanitizedData, clientIP),
         });
         break; // Success, exit retry loop
-      } catch (error: any) {
+      } catch (error: unknown) {
         retryCount++;
+        const errorMessage = error instanceof Error ? error.message : 'Unknown error';
         logSecurityEvent('RESEND_RETRY_FAILED', { 
           attempt: retryCount, 
-          error: error?.message || 'Unknown error',
+          error: errorMessage,
           ip: clientIP 
         });
         
         if (retryCount > maxRetries) {
           // Log the error for debugging but don't expose details to client
           logSecurityEvent('RESEND_ALL_ATTEMPTS_FAILED', { 
-            error: error?.message || 'Unknown error',
+            error: errorMessage,
             ip: clientIP 
           });
           return createErrorResponse(
@@ -232,12 +232,13 @@ export async function POST(request: NextRequest) {
 
     return addSecurityHeaders(response);
 
-  } catch (error: any) {
+  } catch (error: unknown) {
     const clientIP = request.headers.get('x-forwarded-for') || 
                     request.headers.get('x-real-ip') || 
                     'unknown';
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
     logSecurityEvent('UNEXPECTED_CONTACT_ERROR', { 
-      error: error?.message || 'Unknown error',
+      error: errorMessage,
       ip: clientIP
     });
     return createErrorResponse(

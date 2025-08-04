@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { personalInfo } from "@/data/portfolio";
-import { Mail, MapPin, Download, Send, MessageSquare, FileText, Mail as MailIcon } from "lucide-react";
+import { Mail, MapPin, Send, FileText, Mail as MailIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import ResumeDownload from "./ResumeDownload";
@@ -58,7 +58,7 @@ export default function Contact() {
         setSubmitStatus('error');
         setSubmitMessage(data.error || 'Failed to send message. Please try again.');
       }
-    } catch (error) {
+    } catch {
       setSubmitStatus('error');
       setSubmitMessage('Network error. Please check your connection and try again.');
     } finally {

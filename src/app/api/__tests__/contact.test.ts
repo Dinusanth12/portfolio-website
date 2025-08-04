@@ -21,7 +21,7 @@ describe('Contact API Route', () => {
   })
 
   it('handles successful email sending', async () => {
-    const mockResend = require('resend')
+    const mockResend = await import('resend')
     mockResend.Resend.mockImplementation(() => ({
       emails: {
         send: jest.fn().mockResolvedValue({ id: 'test-id' }),
@@ -97,7 +97,7 @@ describe('Contact API Route', () => {
   })
 
   it('handles Resend API errors', async () => {
-    const mockResend = require('resend')
+    const mockResend = await import('resend')
     mockResend.Resend.mockImplementation(() => ({
       emails: {
         send: jest.fn().mockRejectedValue(new Error('Resend API error')),

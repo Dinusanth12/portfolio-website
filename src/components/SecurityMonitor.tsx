@@ -6,7 +6,7 @@ import { handleClientError } from '@/lib/error-handler';
 interface SecurityEvent {
   type: string;
   timestamp: string;
-  details: any;
+  details: Record<string, unknown>;
 }
 
 export default function SecurityMonitor() {
@@ -66,7 +66,7 @@ export default function SecurityMonitor() {
           info: console.info,
         };
 
-        const logEvent = (level: string, ...args: any[]) => {
+        const logEvent = (level: string, ...args: unknown[]) => {
           const event: SecurityEvent = {
             type: 'CONSOLE_ACCESS',
             timestamp: new Date().toISOString(),

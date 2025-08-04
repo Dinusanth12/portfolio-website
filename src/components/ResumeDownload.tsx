@@ -2,11 +2,10 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FileText, Download, ExternalLink, AlertCircle } from 'lucide-react';
+import { FileText, Download, ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 export default function ResumeDownload() {
-  const [isHovered, setIsHovered] = useState(false);
 
   return (
     <div className="card-professional p-6 sm:p-8 md:p-10 rounded-3xl">
@@ -55,8 +54,7 @@ export default function ResumeDownload() {
               size="lg"
               asChild
               className="font-bold"
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
+
             >
               <a 
                 href="/resume.pdf" 

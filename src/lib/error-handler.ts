@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import React from 'react';
+
 import { SecurityError, ValidationError, logSecurityEvent } from './security';
 
 // Error types
@@ -31,7 +31,7 @@ export interface AppError {
   path?: string;
   userAgent?: string;
   ip?: string;
-  details?: any;
+  details?: Record<string, unknown>;
 }
 
 // Error handler class
@@ -50,14 +50,14 @@ export class ErrorHandler {
   }
 
   // Handle and log errors
-  handleError(error: any, request?: NextRequest): AppError {
+  handleError(error: unknown, request?: NextRequest): AppError {
     const appError = this.createAppError(error, request);
     this.logError(appError);
     return appError;
   }
 
   // Create standardized error object
-  private createAppError(error: any, request?: NextRequest): AppError {
+  private createAppError(error: unknown, request?: NextRequest): AppError {
     const timestamp = new Date().toISOString();
     const path = request?.url || 'unknown';
     const userAgent = request?.headers.get('user-agent') || 'unknown';
@@ -97,7 +97,8 @@ export class ErrorHandler {
     }
 
     // Handle network errors
-    if (error.code === 'ENOTFOUND' || error.code === 'ECONNREFUSED') {
+    if (error && typeof error === 'object' && 'code' in error && 
+        (error.code === 'ENOTFOUND' || error.code === 'ECONNREFUSED')) {
       return {
         type: ErrorType.NETWORK,
         severity: ErrorSeverity.MEDIUM,
@@ -113,7 +114,9 @@ export class ErrorHandler {
     }
 
     // Handle server errors
-    if (error.statusCode >= 500) {
+    if (error && typeof error === 'object' && 'statusCode' in error && 
+        typeof (error as { statusCode: number }).statusCode === 'number' && 
+        (error as { statusCode: number }).statusCode >= 500) {
       return {
         type: ErrorType.SERVER,
         severity: ErrorSeverity.HIGH,
@@ -231,7 +234,7 @@ export function createErrorResponse(error: AppError): NextResponse {
 }
 
 // Client-side error handling
-export function handleClientError(error: any, context?: string): void {
+export function handleClientError(error: unknown, context?: string): void {
   const errorInfo = {
     message: error.message || 'Unknown error',
     stack: error.stack,

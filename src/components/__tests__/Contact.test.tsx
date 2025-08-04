@@ -1,4 +1,4 @@
-import { render, screen, fireEvent, waitFor } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import Contact from '../Contact'
 
@@ -128,12 +128,12 @@ describe('Contact Component', () => {
     const mockFetch = global.fetch as jest.MockedFunction<typeof fetch>
     
     // Create a promise that doesn't resolve immediately
-    let resolvePromise: (value: any) => void
+    let resolvePromise: (value: unknown) => void
     const pendingPromise = new Promise((resolve) => {
       resolvePromise = resolve
     })
     
-    mockFetch.mockReturnValueOnce(pendingPromise as any)
+    mockFetch.mockReturnValueOnce(pendingPromise as Promise<Response>)
     
     render(<Contact />)
     

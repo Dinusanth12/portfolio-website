@@ -2,8 +2,7 @@
 
 import { motion } from "framer-motion";
 import { extracurriculars } from "@/data/portfolio";
-import { Heart, Users, BookOpen, Zap, Award, Star, Mail } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Heart, Award } from "lucide-react";
 
 export default function Extracurriculars() {
   return (

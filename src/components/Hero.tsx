@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { personalInfo } from "@/data/portfolio";
-import { Mail, Github, Linkedin, MapPin, Calendar, ArrowDown } from "lucide-react";
+import { Mail, Github, MapPin, Calendar, ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function Hero() {

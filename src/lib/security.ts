@@ -166,7 +166,7 @@ export function validateRequest(request: NextRequest): void {
 }
 
 // Logging utilities
-export function logSecurityEvent(event: string, details: any = {}): void {
+export function logSecurityEvent(event: string, details: Record<string, unknown> = {}): void {
   const timestamp = new Date().toISOString();
   console.log(`[SECURITY] ${timestamp} - ${event}`, details);
 }

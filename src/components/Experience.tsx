@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { experience } from "@/data/portfolio";
-import { Briefcase, Calendar, TrendingUp, Award, Users, Zap, Building2, Mail } from "lucide-react";
+import { Briefcase, Calendar, TrendingUp, Users, Zap, Building2, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function Experience() {

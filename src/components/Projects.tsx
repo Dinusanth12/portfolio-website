@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { projects, personalInfo } from "@/data/portfolio";
-import { Code, ExternalLink, Github, Mail, Zap } from "lucide-react";
+import { Code, Github, Mail, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function Projects() {
