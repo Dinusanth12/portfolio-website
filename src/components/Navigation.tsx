@@ -24,18 +24,14 @@ export default function Navigation() {
     };
 
     window.addEventListener("scroll", handleScroll);
+    console.log("Navbar rendered, z-index: 9999, position: fixed");
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.8, type: "spring" }}
-      className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-300 ${
-        isScrolled
-          ? "bg-white/95 backdrop-blur-md border-b border-slate-blue/20 shadow-xl"
-          : "bg-white/95 backdrop-blur-md border-b border-slate-blue/20"
+      className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-300 bg-white shadow-lg border-b border-slate-blue/20 ${
+        isScrolled ? "shadow-xl" : ""
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
