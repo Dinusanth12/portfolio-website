@@ -109,7 +109,7 @@ export class ErrorHandler {
         path,
         userAgent,
         ip,
-        details: { originalError: error.message },
+        details: { originalError: (error as { message?: string }).message || 'Unknown error' },
       };
     }
 
@@ -127,7 +127,7 @@ export class ErrorHandler {
         path,
         userAgent,
         ip,
-        details: { originalError: error.message },
+        details: { originalError: (error as { message?: string }).message || 'Unknown error' },
       };
     }
 
@@ -135,7 +135,7 @@ export class ErrorHandler {
     return {
       type: ErrorType.UNKNOWN,
       severity: ErrorSeverity.MEDIUM,
-      message: error.message || 'An unexpected error occurred',
+      message: (error as { message?: string }).message || 'An unexpected error occurred',
       code: 'UNKNOWN_ERROR',
       statusCode: 500,
       timestamp,
@@ -236,8 +236,8 @@ export function createErrorResponse(error: AppError): NextResponse {
 // Client-side error handling
 export function handleClientError(error: unknown, context?: string): void {
   const errorInfo = {
-    message: error.message || 'Unknown error',
-    stack: error.stack,
+    message: (error as { message?: string }).message || 'Unknown error',
+    stack: (error as { stack?: string }).stack,
     context,
     timestamp: new Date().toISOString(),
     url: typeof window !== 'undefined' ? window.location.href : 'unknown',
