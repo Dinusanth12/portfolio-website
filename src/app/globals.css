@@ -14,9 +14,6 @@
     will-change: auto;
     transform: translateZ(0);
     backface-visibility: hidden;
-    /* Account for fixed navbar */
-    padding-top: 80px;
-    margin-top: 0;
   }
   
   /* Prevent font flashing during animations */
