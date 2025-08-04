@@ -173,13 +173,13 @@ export async function POST(request: NextRequest) {
           subject: `Contact Form: ${sanitizedData.subject}`,
         });
         
-        // Use Outlook email instead of Gmail to avoid domain verification issues
+        // Send to your own verified email address (Gmail) as required by Resend
         emailResult = await resend.emails.send({
           from: 'onboarding@resend.dev',
-          to: ['dinusanth.s@outlook.com'], // Changed to Outlook
+          to: ['dinusanth.s@gmail.com'], // Send to your own verified email
           subject: `Contact Form: ${sanitizedData.subject}`,
           html: createEmailTemplate(sanitizedData, clientIP),
-          replyTo: sanitizedData.email,
+          replyTo: sanitizedData.email, // Reply-to will be the sender's email
         });
         
         console.log('Email result:', emailResult);
