@@ -97,7 +97,7 @@ export default function Hero() {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-steel-blue leading-relaxed mb-8 font-semibold"
             >
-              <span className="text-royal-blue font-bold">{personalInfo.title}</span> with 1+ years building{" "}
+              <span className="text-royal-blue font-bold">{personalInfo.title}</span> with <span className="text-slate-blue font-bold">1+ years</span> building{" "}
               <span className="text-slate-blue font-bold">production-grade systems</span>
             </motion.p>
 
