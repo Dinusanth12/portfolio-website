@@ -57,7 +57,7 @@ export default function Navigation() {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="hidden lg:flex xl:flex items-center space-x-8"
+            className="hidden xl:flex items-center space-x-8"
           >
             {navItems.map((item, index) => (
               <motion.a
@@ -79,7 +79,7 @@ export default function Navigation() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="hidden lg:flex xl:flex items-center space-x-4"
+            className="hidden xl:flex items-center space-x-4"
           >
             {/* Social Links */}
             <div className="flex items-center space-x-3">
@@ -126,7 +126,7 @@ export default function Navigation() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.6 }}
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 rounded-xl bg-gradient-to-br from-royal-blue to-slate-blue text-white hover-elegant"
+            className="xl:hidden p-2 rounded-xl bg-gradient-to-br from-royal-blue to-slate-blue text-white hover-elegant"
           >
             {isOpen ? (
               <X className="h-6 w-6" />
@@ -145,7 +145,7 @@ export default function Navigation() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="lg:hidden bg-pale-blue/95 backdrop-blur-md border-t border-sky-blue/40"
+            className="xl:hidden bg-pale-blue/95 backdrop-blur-md border-t border-sky-blue/40"
           >
             <div className="px-4 py-6 space-y-4">
               {navItems.map((item, index) => (
