@@ -126,13 +126,21 @@ export default function Navigation() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.6 }}
             onClick={() => setIsOpen(!isOpen)}
-            className="xl:hidden p-2 rounded-xl bg-gradient-to-br from-royal-blue to-slate-blue text-white hover-elegant"
+            className="xl:hidden p-2 rounded-xl bg-gradient-to-br from-royal-blue to-slate-blue text-white hover-elegant transition-all duration-200"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
           >
-            {isOpen ? (
-              <X className="h-6 w-6" />
-            ) : (
-              <Menu className="h-6 w-6" />
-            )}
+            <motion.div
+              initial={false}
+              animate={{ rotate: isOpen ? 180 : 0 }}
+              transition={{ duration: 0.2 }}
+            >
+              {isOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
+            </motion.div>
           </motion.button>
         </div>
       </div>
@@ -141,11 +149,11 @@ export default function Navigation() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="xl:hidden bg-pale-blue/95 backdrop-blur-md border-t border-sky-blue/40"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="xl:hidden bg-white/95 backdrop-blur-md border-t border-slate-blue/20 shadow-lg"
           >
             <div className="px-4 py-6 space-y-4">
               {navItems.map((item, index) => (
@@ -154,9 +162,11 @@ export default function Navigation() {
                   href={item.href}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.3, delay: index * 0.1 }}
+                  transition={{ duration: 0.2, delay: index * 0.05 }}
                   onClick={() => setIsOpen(false)}
-                  className="block text-slate-blue hover:text-royal-blue font-semibold text-lg py-3 px-4 rounded-xl hover:bg-sky-blue/20 transition-all duration-300"
+                  className="block text-slate-blue hover:text-royal-blue font-semibold text-lg py-3 px-4 rounded-xl hover:bg-slate-blue/10 transition-all duration-200"
+                  whileHover={{ x: 5 }}
+                  whileTap={{ scale: 0.98 }}
                 >
                   {item.label}
                 </motion.a>

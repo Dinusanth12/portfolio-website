@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { validateEnvironment } from "@/lib/security";
 import SecurityMonitor from "@/components/SecurityMonitor";
+import NoJavaScriptWarning from "@/components/NoJavaScriptWarning";
 
 // Validate environment on startup
 if (process.env.NODE_ENV === 'production') {
@@ -69,6 +70,7 @@ export default function RootLayout({
       >
         {children}
         <SecurityMonitor />
+        <NoJavaScriptWarning />
       </body>
     </html>
   );
