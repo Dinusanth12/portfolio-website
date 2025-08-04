@@ -188,11 +188,14 @@ export async function POST(request: NextRequest) {
             error: errorMessage,
             ip: clientIP 
           });
-          return createErrorResponse(
-            errorHandler.handleError(
-              new SecurityError('Unable to send email at this time. Please try again later.', 503, 'EMAIL_SERVICE_ERROR'),
-              request
-            )
+          
+          // Return more specific error for debugging
+          return NextResponse.json(
+            { 
+              error: `Email service error: ${errorMessage}`,
+              success: false 
+            },
+            { status: 503 }
           );
         }
         
@@ -206,11 +209,12 @@ export async function POST(request: NextRequest) {
         error: emailResult.error,
         ip: clientIP 
       });
-      return createErrorResponse(
-        errorHandler.handleError(
-          new SecurityError('Unable to send email at this time. Please try again later.', 503, 'EMAIL_SERVICE_ERROR'),
-          request
-        )
+      return NextResponse.json(
+        { 
+          error: `Resend API error: ${emailResult.error}`,
+          success: false 
+        },
+        { status: 503 }
       );
     }
 
