@@ -146,18 +146,18 @@ export class ValidationError extends Error {
 
 // Request validation
 export function validateRequest(request: NextRequest): void {
-  const userAgent = request.headers.get('user-agent');
   const contentType = request.headers.get('content-type');
   
-  // Check for suspicious user agents
-  if (userAgent && (
-    userAgent.includes('bot') ||
-    userAgent.includes('crawler') ||
-    userAgent.includes('spider') ||
-    userAgent.length > 500
-  )) {
-    throw new SecurityError('Invalid request', 403, 'SUSPICIOUS_USER_AGENT');
-  }
+  // Temporarily disabled user agent validation for production testing
+  // const userAgent = request.headers.get('user-agent');
+  // if (userAgent && (
+  //   userAgent.includes('bot') ||
+  //   userAgent.includes('crawler') ||
+  //   userAgent.includes('spider') ||
+  //   userAgent.length > 500
+  // )) {
+  //   throw new SecurityError('Invalid request', 403, 'SUSPICIOUS_USER_AGENT');
+  // }
   
   // Validate content type for POST requests
   if (request.method === 'POST' && contentType !== 'application/json') {
