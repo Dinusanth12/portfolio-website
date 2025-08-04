@@ -83,7 +83,7 @@ export async function POST(request: NextRequest) {
                     request.headers.get('x-real-ip') || 
                     'unknown';
     
-    if (isRateLimited(clientIP, 3)) { // 3 requests per minute for contact form
+    if (isRateLimited(clientIP, 20)) { // 20 requests per 15 minutes for contact form (much more reasonable)
       logSecurityEvent('RATE_LIMIT_EXCEEDED', { ip: clientIP, endpoint: '/api/contact' });
       return createErrorResponse(
         errorHandler.handleError(
