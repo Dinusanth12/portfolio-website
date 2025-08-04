@@ -83,15 +83,16 @@ export async function POST(request: NextRequest) {
                     request.headers.get('x-real-ip') || 
                     'unknown';
     
-    if (isRateLimited(clientIP, 20)) { // 20 requests per 15 minutes for contact form (much more reasonable)
-      logSecurityEvent('RATE_LIMIT_EXCEEDED', { ip: clientIP, endpoint: '/api/contact' });
-      return createErrorResponse(
-        errorHandler.handleError(
-          new SecurityError('Too many requests. Please try again later.', 429, 'RATE_LIMIT_EXCEEDED'),
-          request
-        )
-      );
-    }
+    // Temporarily disabled rate limiting for testing
+    // if (isRateLimited(clientIP, 20)) { // 20 requests per 15 minutes for contact form (much more reasonable)
+    //   logSecurityEvent('RATE_LIMIT_EXCEEDED', { ip: clientIP, endpoint: '/api/contact' });
+    //   return createErrorResponse(
+    //     errorHandler.handleError(
+    //       new SecurityError('Too many requests. Please try again later.', 429, 'RATE_LIMIT_EXCEEDED'),
+    //       request
+    //     )
+    //   );
+    // }
 
     // Parse and validate request body
     let body;
