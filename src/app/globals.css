@@ -1,26 +1,88 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    @apply bg-pale-blue text-slate-blue;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  /* Button variants */
+  .btn-sophisticated {
+    @apply bg-gradient-to-r from-royal-blue via-slate-blue to-steel-blue text-white font-bold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:scale-105;
+  }
+  
+  .btn-outline {
+    @apply border-2 border-royal-blue bg-white text-royal-blue font-bold px-8 py-4 rounded-xl hover:bg-gradient-to-r hover:from-royal-blue hover:to-slate-blue hover:text-white transition-all duration-300;
+  }
+  
+  .btn-ghost {
+    @apply text-slate-blue font-bold px-6 py-3 rounded-lg hover:bg-slate-blue/10 transition-all duration-300;
+  }
+}
+
+@layer utilities {
+  /* Subtle text shadows for better readability */
+  .text-shadow {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+  .text-shadow-lg {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  }
+  .text-shadow-elegant {
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Subtle drop shadows for better text contrast */
+  .drop-shadow-text {
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+  }
+  .drop-shadow-text-lg {
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+  }
+
+  /* Elegant gradients */
+  .bg-gradient-elegant {
+    background: linear-gradient(135deg, #FAFCFB 0%, #B9F0F9 50%, #78AEC6 100%);
+  }
+  .bg-gradient-professional {
+    background: linear-gradient(135deg, #2A6D99 0%, #0379C7 50%, #78AEC6 100%);
+  }
+  .bg-gradient-sophisticated {
+    background: linear-gradient(135deg, #0379C7 0%, #2A6D99 50%, #78AEC6 100%);
+  }
+
+  /* Card styles */
+  .card-elegant {
+    @apply bg-white/90 backdrop-blur-sm border-2 border-sky-blue/60 shadow-2xl;
+  }
+  .card-professional {
+    @apply bg-white/95 backdrop-blur-md border-2 border-royal-blue/50 shadow-2xl;
+  }
+  .card-sophisticated {
+    @apply bg-gradient-to-br from-white/95 via-pale-blue/90 to-sky-blue/80 backdrop-blur-md border-2 border-steel-blue/60 shadow-2xl;
+  }
+
+  /* Glass effects */
+  .glass-effect {
+    @apply bg-white/70 backdrop-blur-sm border border-sky-blue/40;
+  }
+  .glass-effect-strong {
+    @apply bg-white/80 backdrop-blur-md border border-royal-blue/50;
+  }
+
+  /* Hover effects */
+  .hover-elegant {
+    @apply transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 hover:scale-105;
+  }
+  .hover-professional {
+    @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-0.5 hover:scale-105;
+  }
 }
