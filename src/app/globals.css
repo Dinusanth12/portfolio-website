@@ -10,21 +10,6 @@
       sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    /* Improve animation performance */
-    will-change: auto;
-    transform: translateZ(0);
-    backface-visibility: hidden;
-  }
-  
-  /* Prevent font flashing during animations */
-  * {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  
-  /* Smooth scrolling */
-  html {
-    scroll-behavior: smooth;
   }
 }
 
