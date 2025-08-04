@@ -128,7 +128,7 @@ export default function Hero() {
               </div>
               <div className="flex items-center glass-effect px-4 py-3 rounded-lg shadow-sm hover-elegant">
                 <Calendar className="h-5 w-5 mr-3 text-steel-blue" />
-                <span className="text-slate-blue font-semibold">Graduating {personalInfo.graduation}</span>
+                <span className="text-slate-blue font-semibold">Graduation Date: Dec 28</span>
               </div>
             </motion.div>
 
