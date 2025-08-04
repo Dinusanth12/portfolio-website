@@ -24,7 +24,7 @@ export default function NoJavaScriptWarning() {
           This website requires JavaScript to function properly. Please enable JavaScript in your browser to continue.
         </p>
         <p className="text-sm opacity-80">
-          If you're using a browser extension that blocks JavaScript, please disable it for this site.
+          If you&apos;re using a browser extension that blocks JavaScript, please disable it for this site.
         </p>
       </div>
     </div>
