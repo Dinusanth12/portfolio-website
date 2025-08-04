@@ -57,7 +57,7 @@ export default function Navigation() {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="hidden lg:flex items-center space-x-8"
+            className="hidden lg:flex xl:flex items-center space-x-8"
           >
             {navItems.map((item, index) => (
               <motion.a
@@ -79,7 +79,7 @@ export default function Navigation() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="hidden lg:flex items-center space-x-4"
+            className="hidden lg:flex xl:flex items-center space-x-4"
           >
             {/* Social Links */}
             <div className="flex items-center space-x-3">
