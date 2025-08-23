@@ -97,22 +97,8 @@ export default function Hero() {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-steel-blue leading-relaxed mb-8 font-semibold"
             >
-              <span className="text-royal-blue font-bold">{personalInfo.title}</span> with <span className="text-slate-blue font-bold">1+ years</span> building{" "}
-              <span className="text-slate-blue font-bold">automation systems</span>
-            </motion.p>
-
-            {/* Description */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              className="text-base sm:text-lg md:text-xl text-slate-blue mb-8 max-w-3xl mx-auto font-medium leading-relaxed"
-            >
-              Currently working at{" "}
-              <span className="text-royal-blue font-semibold">RBC</span> and{" "}
-              <span className="text-royal-blue font-semibold">LB Connect</span> while building{" "}
-              <span className="text-royal-blue font-semibold">automation tools</span> and{" "}
-              <span className="text-royal-blue font-semibold">software solutions</span>.
+              <span className="text-royal-blue font-bold">{personalInfo.title}</span> with <span className="text-slate-blue font-bold">1+ years</span> while building{" "}
+              <span className="text-slate-blue font-bold">quantitative trading platforms</span>
             </motion.p>
 
             {/* Location & Graduation */}
