@@ -50,10 +50,10 @@ export default function About() {
             viewport={{ once: true }}
             className="text-2xl text-pale-blue max-w-5xl mx-auto leading-relaxed font-medium text-shadow-elegant"
           >
-            Quantitative-focused engineer with experience building{" "}
+            Software engineer with 1+ years experience building{" "}
             <span className="text-white font-bold">production-grade automation systems</span>,{" "}
-            <span className="text-white font-bold">financial models</span>, and{" "}
-            <span className="text-white font-bold">quantitative trading platforms</span> across enterprise and startup environments.
+            <span className="text-white font-bold">software solutions</span>, and{" "}
+            <span className="text-white font-bold">enterprise applications</span> across financial services and startup environments.
           </motion.p>
         </motion.div>
 
@@ -157,26 +157,26 @@ export default function About() {
               {[
                 {
                   icon: Target,
-                  title: "Quantitative Development",
-                  description: "Building financial models, option pricing systems, and trading algorithms",
+                  title: "Automation Systems",
+                  description: "Building production-grade automation and data processing pipelines",
                   color: "from-royal-blue to-slate-blue"
                 },
                 {
                   icon: Users,
-                  title: "Financial Engineering",
-                  description: "Black-Scholes, Monte Carlo, risk management, and portfolio optimization",
+                  title: "Software Development",
+                  description: "Backend systems, APIs, and enterprise application development",
                   color: "from-slate-blue to-steel-blue"
                 },
                 {
                   icon: BookOpen,
-                  title: "Backend Systems",
-                  description: "Production-grade automation and data pipeline development",
+                  title: "Financial Services",
+                  description: "Banking automation, fintech solutions, and data processing",
                   color: "from-steel-blue to-royal-blue"
                 },
                 {
                   icon: Zap,
-                  title: "High-Frequency Trading",
-                  description: "Distributed systems, fault tolerance, and real-time data processing",
+                  title: "Data Engineering",
+                  description: "ETL pipelines, data cleaning, and analytics infrastructure",
                   color: "from-royal-blue via-slate-blue to-steel-blue"
                 }
               ].map((area, index) => (
@@ -226,7 +226,7 @@ export default function About() {
               Technical Skills & Certificates
             </h3>
             <p className="text-pale-blue text-xl font-medium text-shadow-elegant">
-              Essential toolkit for quantitative development and financial engineering
+              Essential toolkit for automation systems and software development
             </p>
           </motion.div>
 

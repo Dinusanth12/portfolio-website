@@ -52,9 +52,9 @@ export default function Experience() {
             className="text-2xl text-pale-blue max-w-5xl mx-auto leading-relaxed font-medium text-shadow-elegant"
           >
             Building{" "}
-            <span className="text-white font-bold">quantitative trading platforms</span>,{" "}
-            <span className="text-white font-bold">financial models</span>, and{" "}
-            <span className="text-white font-bold">production-grade automation systems</span> across enterprise and startup environments.
+            <span className="text-white font-bold">production-grade automation systems</span>,{" "}
+            <span className="text-white font-bold">software solutions</span>, and{" "}
+            <span className="text-white font-bold">enterprise applications</span> across financial services and startup environments.
           </motion.p>
         </motion.div>
 
