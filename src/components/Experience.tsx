@@ -52,9 +52,9 @@ export default function Experience() {
             className="text-2xl text-pale-blue max-w-5xl mx-auto leading-relaxed font-medium text-shadow-elegant"
           >
             Building{" "}
-            <span className="text-white font-bold">production-grade automation systems</span>,{" "}
-            <span className="text-white font-bold">data pipelines</span>, and{" "}
-            <span className="text-white font-bold">quant tools</span> across enterprise and startup environments.
+            <span className="text-white font-bold">quantitative trading platforms</span>,{" "}
+            <span className="text-white font-bold">financial models</span>, and{" "}
+            <span className="text-white font-bold">production-grade automation systems</span> across enterprise and startup environments.
           </motion.p>
         </motion.div>
 
@@ -67,26 +67,26 @@ export default function Experience() {
                 </div>
           
           {/* Timeline Items */}
-          <div className="space-y-6">
-            {experience.map((exp, index) => (
+          <div className="space-y-16">
+            {experience.filter(exp => exp.title !== "Math Tutor").map((exp, index) => (
               <motion.div
                 key={`${exp.company}-${exp.title}`}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50, y: index === 1 ? 40 : index === 2 ? 80 : 0 }}
-                whileInView={{ opacity: 1, x: 0, y: 0 }}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.2, type: "spring" }}
                 viewport={{ once: true }}
                 className={`relative flex flex-col md:flex-row items-center ${
                   index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-                } ${index === 0 ? '-mt-8' : index === 1 ? '-mt-24' : '-mt-40'}`}
+                }`}
               >
                 {/* Timeline Dot */}
-                <div className={`absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-gradient-to-br ${index === 0 ? 'from-royal-blue to-slate-blue' : index === 1 ? 'from-slate-blue to-steel-blue' : 'from-steel-blue to-royal-blue'} rounded-full border-4 border-white shadow-xl z-10 hidden md:block ${index === 1 ? 'md:transform md:-translate-y-24' : index === 2 ? 'md:transform md:-translate-y-40' : ''}`}></div>
+                <div className={`absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-gradient-to-br ${index === 0 ? 'from-royal-blue to-slate-blue' : index === 1 ? 'from-slate-blue to-steel-blue' : 'from-steel-blue to-royal-blue'} rounded-full border-4 border-white shadow-xl z-10 hidden md:block`}></div>
                 
                 {/* Timeline Glow */}
-                <div className={`absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-gradient-to-br ${index === 0 ? 'from-royal-blue/30 to-slate-blue/30' : index === 1 ? 'from-slate-blue/30 to-steel-blue/30' : 'from-steel-blue/30 to-royal-blue/30'} rounded-full blur-sm z-5 hidden md:block ${index === 1 ? 'md:transform md:-translate-y-24' : index === 2 ? 'md:transform md:-translate-y-40' : ''}`}></div>
+                <div className={`absolute left-1/2 transform -translate-x-1/2 w-12 h-12 bg-gradient-to-br ${index === 0 ? 'from-royal-blue/30 to-slate-blue/30' : index === 1 ? 'from-slate-blue/30 to-steel-blue/30' : 'from-steel-blue/30 to-royal-blue/30'} rounded-full blur-sm z-5 hidden md:block`}></div>
                 
                 {/* Content Box */}
-                <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'md:pr-8' : 'md:pl-8'} ${index === 1 ? 'md:transform md:-translate-y-24' : index === 2 ? 'md:transform md:-translate-y-40' : ''}`}>
+                <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'md:pr-8' : 'md:pl-8'}`}>
                   <motion.div
                     initial={{ scale: 0.9 }}
                     whileInView={{ scale: 1 }}
@@ -159,103 +159,7 @@ export default function Experience() {
         </div>
 
         {/* Currently Seeking Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          viewport={{ once: true }}
-          className="mt-8"
-        >
-                      <div className="card-professional p-6 sm:p-8 md:p-10 rounded-3xl">
-            <div className="text-center mb-6 sm:mb-8 md:mb-10">
-              <motion.div 
-                initial={{ scale: 0 }}
-                whileInView={{ scale: 1 }}
-                transition={{ duration: 0.6, type: "spring" }}
-                viewport={{ once: true }}
-                className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-royal-blue via-slate-blue to-steel-blue rounded-full mb-6 shadow-lg"
-              >
-                <Zap className="h-10 w-10 text-white" />
-              </motion.div>
-              <h3 className="text-3xl font-bold text-slate-blue mb-6">
-                Seeking Jan & May 2026 Co-op/Internship
-              </h3>
-              <p className="text-steel-blue max-w-4xl mx-auto font-medium text-lg leading-relaxed">
-                Looking for opportunities to continue building production-grade systems and expand my expertise in backend engineering, automation, and quantitative tools.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-8">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.5, type: "spring" }}
-                viewport={{ once: true }}
-                className="text-center"
-              >
-                <div className="w-20 h-20 bg-gradient-to-br from-royal-blue to-slate-blue rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
-                  <Calendar className="h-10 w-10 text-white" />
-                </div>
-                <h4 className="font-bold text-slate-blue mb-3 text-lg">
-                  Jan & May 2026 Co-op/Internship
-                </h4>
-                <p className="text-steel-blue text-base font-medium">
-                  Backend engineering and automation opportunities
-                </p>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.6, type: "spring" }}
-                viewport={{ once: true }}
-                className="text-center"
-              >
-                <div className="w-20 h-20 bg-gradient-to-br from-slate-blue to-steel-blue rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
-                  <TrendingUp className="h-10 w-10 text-white" />
-                </div>
-                <h4 className="font-bold text-slate-blue mb-3 text-lg">
-                  Production Systems
-                </h4>
-                <p className="text-steel-blue text-base font-medium">
-                  Enterprise automation and data pipeline development
-                </p>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.7, type: "spring" }}
-                viewport={{ once: true }}
-                className="text-center"
-              >
-                <div className="w-20 h-20 bg-gradient-to-br from-steel-blue to-royal-blue rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
-                  <Users className="h-10 w-10 text-white" />
-                </div>
-                <h4 className="font-bold text-slate-blue mb-3 text-lg">
-                  Quantitative Tools
-                </h4>
-                <p className="text-steel-blue text-base font-medium">
-                  Backtesting strategies and hedge-fund style metrics
-                </p>
-              </motion.div>
-            </div>
-
-            <div className="text-center mt-10">
-              <Button
-                variant="sophisticated"
-                size="xl"
-                asChild
-                className="font-semibold"
-              >
-                <a href="#contact">
-                  <Mail className="h-6 w-6 mr-3" />
-                  Let&apos;s Connect
-                </a>
-              </Button>
-            </div>
-          </div>
-        </motion.div>
+        
       </div>
     </section>
   );

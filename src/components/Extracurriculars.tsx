@@ -41,7 +41,7 @@ export default function Extracurriculars() {
             viewport={{ once: true }}
             className="text-5xl sm:text-6xl font-bold text-white mb-6 text-shadow-elegant"
           >
-            Hobbies & Interests
+            Leadership Experience
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -50,9 +50,10 @@ export default function Extracurriculars() {
             viewport={{ once: true }}
             className="text-2xl text-pale-blue max-w-5xl mx-auto leading-relaxed font-medium text-shadow-elegant"
           >
-            I&apos;m committed to creating opportunities for underrepresented youth in{" "}
-            <span className="text-white font-bold">tech</span> and{" "}
-            <span className="text-white font-bold">finance</span>.
+            Leading{" "}
+            <span className="text-white font-bold">youth organizations</span>,{" "}
+            <span className="text-white font-bold">entrepreneurial ventures</span>, and{" "}
+            <span className="text-white font-bold">community initiatives</span> with measurable impact.
           </motion.p>
         </motion.div>
 

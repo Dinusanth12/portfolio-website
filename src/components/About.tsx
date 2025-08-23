@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { personalInfo } from "@/data/portfolio";
-import { GraduationCap, Building2, Target, Users, BookOpen, Zap } from "lucide-react";
+import { GraduationCap, Building2, Target, Users, BookOpen, Zap, Code, Award } from "lucide-react";
 
 export default function About() {
   return (
@@ -50,10 +50,10 @@ export default function About() {
             viewport={{ once: true }}
             className="text-2xl text-pale-blue max-w-5xl mx-auto leading-relaxed font-medium text-shadow-elegant"
           >
-            Backend-focused engineer with 1+ years building{" "}
+            Quantitative-focused engineer with experience building{" "}
             <span className="text-white font-bold">production-grade automation systems</span>,{" "}
-            <span className="text-white font-bold">data pipelines</span>, and{" "}
-            <span className="text-white font-bold">quant tools</span> across enterprise and startup environments.
+            <span className="text-white font-bold">financial models</span>, and{" "}
+            <span className="text-white font-bold">quantitative trading platforms</span> across enterprise and startup environments.
           </motion.p>
         </motion.div>
 
@@ -112,8 +112,8 @@ export default function About() {
                   <Building2 className="h-8 w-8 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-slate-blue">Current Roles</h3>
-                  <p className="text-steel-blue font-semibold text-lg">Dual Internships</p>
+                  <h3 className="text-2xl font-bold text-slate-blue">Recent Experience</h3>
+                  <p className="text-steel-blue font-semibold text-lg">Dual Internships (2025)</p>
                 </div>
               </div>
               <div className="space-y-6">
@@ -157,26 +157,26 @@ export default function About() {
               {[
                 {
                   icon: Target,
-                  title: "Backend Engineering",
-                  description: "Building production-grade systems and data pipelines",
+                  title: "Quantitative Development",
+                  description: "Building financial models, option pricing systems, and trading algorithms",
                   color: "from-royal-blue to-slate-blue"
                 },
                 {
                   icon: Users,
-                  title: "Automation Systems",
-                  description: "Enterprise automation and CI/CD pipelines",
+                  title: "Financial Engineering",
+                  description: "Black-Scholes, Monte Carlo, risk management, and portfolio optimization",
                   color: "from-slate-blue to-steel-blue"
                 },
                 {
                   icon: BookOpen,
-                  title: "Quantitative Tools",
-                  description: "Hedge-fund style metrics and backtesting strategies",
+                  title: "Backend Systems",
+                  description: "Production-grade automation and data pipeline development",
                   color: "from-steel-blue to-royal-blue"
                 },
                 {
                   icon: Zap,
-                  title: "Distributed Systems",
-                  description: "Fault tolerance and modular architecture",
+                  title: "High-Frequency Trading",
+                  description: "Distributed systems, fault tolerance, and real-time data processing",
                   color: "from-royal-blue via-slate-blue to-steel-blue"
                 }
               ].map((area, index) => (
@@ -206,6 +206,112 @@ export default function About() {
             </div>
           </motion.div>
         </div>
+
+        {/* Skills & Certificates Section - Optimized View */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          viewport={{ once: true }}
+          className="mt-20"
+        >
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h3 className="text-4xl font-bold text-white mb-6 text-shadow-elegant">
+              Technical Skills & Certificates
+            </h3>
+            <p className="text-pale-blue text-xl font-medium text-shadow-elegant">
+              Essential toolkit for quantitative development and financial engineering
+            </p>
+          </motion.div>
+
+          {/* Detailed Skills - Organized by Category */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* Technical Skills - Compact Layout */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.7 }}
+              viewport={{ once: true }}
+              className="card-professional p-8 rounded-3xl hover-elegant"
+            >
+              <div className="text-center mb-6">
+                <div className="w-14 h-14 bg-gradient-to-br from-royal-blue to-slate-blue rounded-2xl flex items-center justify-center mx-auto mb-3 shadow-lg">
+                  <Code className="h-7 w-7 text-white" />
+                </div>
+                <h4 className="text-xl font-bold text-slate-blue">Technical Skills</h4>
+              </div>
+              
+              <div className="space-y-4">
+                {Object.entries(personalInfo.skills).map(([category, skills], index) => (
+                  <motion.div
+                    key={category}
+                    initial={{ opacity: 0, y: 15 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
+                    viewport={{ once: true }}
+                    className="space-y-2"
+                  >
+                    <h5 className="text-base font-semibold text-steel-blue border-b border-steel-blue/30 pb-1">
+                      {category}
+                    </h5>
+                    <div className="flex flex-wrap gap-1.5">
+                      {skills.map((skill, skillIndex) => (
+                        <motion.span
+                          key={skillIndex}
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          transition={{ duration: 0.3, delay: 0.9 + skillIndex * 0.02 }}
+                          viewport={{ once: true }}
+                          className="px-2.5 py-1.5 bg-gradient-to-r from-royal-blue/15 to-slate-blue/15 text-slate-blue text-xs font-medium rounded-lg border border-royal-blue/30 hover:from-royal-blue/25 hover:to-slate-blue/25 transition-all duration-300 hover:scale-105"
+                        >
+                          {skill}
+                        </motion.span>
+                      ))}
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Certificates - Streamlined */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              viewport={{ once: true }}
+              className="card-professional p-8 rounded-3xl hover-elegant"
+            >
+              <div className="text-center mb-6">
+                <div className="w-14 h-14 bg-gradient-to-br from-slate-blue to-steel-blue rounded-2xl flex items-center justify-center mx-auto mb-3 shadow-lg">
+                  <Award className="h-7 w-7 text-white" />
+                </div>
+                <h4 className="text-xl font-bold text-slate-blue">Certificates</h4>
+              </div>
+              
+              <div className="space-y-3">
+                {personalInfo.certificates?.map((certificate, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 15 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.9 + index * 0.1 }}
+                    viewport={{ once: true }}
+                    className="group flex items-center p-3 bg-gradient-to-r from-slate-blue/15 to-steel-blue/15 rounded-lg border border-slate-blue/30 hover:from-slate-blue/25 hover:to-steel-blue/25 transition-all duration-300 hover:scale-102 hover:shadow-md"
+                  >
+                    <div className="w-2.5 h-2.5 bg-gradient-to-br from-slate-blue to-steel-blue rounded-full mr-3 group-hover:scale-125 transition-transform duration-300"></div>
+                    <span className="text-steel-blue font-medium text-base group-hover:text-slate-blue transition-colors duration-300">{certificate}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

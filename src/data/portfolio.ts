@@ -26,42 +26,60 @@ export interface Extracurricular {
 
 export const projects: Project[] = [
   {
-    title: "Inbox-To-Insights: AI Email Summarizer + Task Engine",
-    description: "Engineered a task management system integrating Gmail, Notion, and Google Sheets using GPT. Minimized data duplication by establishing metadata-based protocols, saving users 5 hours per week on administrative tasks. Integrated unsubscribe prompt detection into task management system using Python and GPT, reducing manual email filtering by 90% and saving users 3 hours per week.",
-    technologies: ["Python", "GPT", "Gmail API", "Notion API", "Google Sheets API"],
-    githubUrl: "https://github.com/Dinusanth12/inbox-to-insights",
+    title: "Options Trading Platform (Python + SQL)",
+    description: "Designed a trading simulator supporting Black-Scholes + Monte Carlo option pricing, analyzing 1000+ contracts daily. Integrated SQL backend and Python dashboard to track option Greeks and portfolio risk exposure, helping users model real-world hedging strategies.",
+    technologies: ["Python", "SQL", "Black-Scholes", "Monte Carlo", "Option Greeks", "Portfolio Risk"],
+    githubUrl: "#",
     demoUrl: "#",
-    impact: "Saved users 8 hours per week on administrative tasks"
+    impact: "Analyzed 1000+ contracts daily with real-world hedging strategies"
   },
   {
-    title: "Quant Backtester Pro: Modular Strategy Engine",
-    description: "Implemented hedge-fund style metrics (Sharpe, Drawdown) and automated reporting to validate trading strategies at scale. Increased code testability by 85% with CI-ready unit tests and complete separation of concerns across strategy/engine/UI layers. Used to simulate alpha strategies by myself and peers on 50k–100k row datasets, mimicking workflows used by quant research desks.",
-    technologies: ["Python", "Polars", "Matplotlib", "Streamlit", "PostgreSQL", "Pytest"],
+    title: "Inbox-to-Insights (Gmail Summarizer, Python + GPT API)",
+    description: "Built a natural language processing pipeline to parse and summarize emails using OpenAI APIs, classifying 500+ emails/month into actionable insights. Automated Excel + email-ready reports, saving end users 5+ hours weekly.",
+    technologies: ["Python", "GPT API", "Gmail API", "NLP", "OpenAI", "Excel Automation"],
+    githubUrl: "https://github.com/Dinusanth12/inbox-to-insights",
+    demoUrl: "#",
+    impact: "Saved users 5+ hours weekly on email processing"
+  },
+  {
+    title: "Quant Backtester Pro (Python, Streamlit)",
+    description: "Developed a modular backtesting engine in Python with Sharpe ratio, drawdown, and volatility metrics, enabling 10+ strategies to be tested efficiently. Integrated Streamlit UI for interactive visualization, allowing real-time portfolio analysis.",
+    technologies: ["Python", "Streamlit", "Sharpe Ratio", "Drawdown", "Volatility", "Backtesting"],
     githubUrl: "https://github.com/Dinusanth12/quant-backtester",
     demoUrl: "#",
-    impact: "Increased code testability by 85% with CI-ready unit tests"
+    impact: "Enabled testing of 10+ strategies efficiently with hedge-fund style metrics"
   }
 ];
 
 export const experience: Experience[] = [
   {
-    title: "Software Engineer",
-    company: "LB Connect – Mortgage Startup",
-    duration: "July 2025 - Present",
-    description: [
-      "Maintained <5% bug regression rate post-release while collaborating directly with CTO on task sprints",
-      "Promoted to codebase gatekeeper after 2 months, approved backend code pushes, reviewed PRs, and managed production releases",
-      "Improved database consistency 4x through refactoring SAP Concur exports with indexing, error handling, and schema validation"
-    ]
-  },
-  {
     title: "Automation Analyst",
     company: "Royal Bank of Canada",
     duration: "May 2025 - Dec 2025",
     description: [
-      "Reduced data processing time by 90% by optimizing backends with Polars, CI/CD pipelines, and modular Python architecture",
-      "Tripled financial audit speeds by automating the parsing of 1,000+ transaction records/week into structured CSVs",
-      "Reduced manual QA effort by 60% through enterprise-grade testing and CI/CD setup"
+      "Rewrote legacy Python scripts into production-grade systems for enterprise automation; pushed code into production",
+      "Built and deployed a backend pipeline to convert 1000+ financial records/week into structured CSVs, by reducing parsing failures and improving ledger consistency",
+      "Collaborated refactored, unit tested, and documented multiple previous legacy codes for production while developing a root cause analysis using NLP specifically BERT"
+    ]
+  },
+  {
+    title: "Software Engineer",
+    company: "LB Connect – Mortgage Startup",
+    duration: "July 2025 - Dec 2025",
+    description: [
+      "Collaborated directly with CTO to plan task sprints and maintain <5% bug regression rate post-release",
+      "Promoted to codebase gatekeeper after 2 months, approved backend code pushes, reviewed PRs, and managed production releases",
+      "Directed database refactor for SAP Concur exports, added indexing, error handling, and schema validation which improved consistency 4x"
+    ]
+  },
+  {
+    title: "Software Analyst",
+    company: "Tremeng Inc.",
+    duration: "May 2023 - Aug 2023",
+    description: [
+      "Redesigned client-facing dashboards using JavaScript, HTML, and CSS, improving load speeds by 25% and enhancing user experience",
+      "Debugged and optimized front-end components, resolving 90% of reported UI bugs ahead of release deadlines",
+      "Collaborated with senior engineers to integrate user feedback into design improvements, boosting client satisfaction metrics"
     ]
   },
   {
@@ -78,65 +96,72 @@ export const experience: Experience[] = [
 
 export const extracurriculars: Extracurricular[] = [
   {
-    title: "YPAM",
+    title: "Young People Achieving Milestones (YPAM)",
     organization: "Youth Organization",
-    role: "Executive Treasurer",
-    description: "Progressive leadership journey from volunteer to Executive Treasurer, overseeing financial operations and strategic initiatives for youth development programs. Led cross-functional teams in executing high-impact events including academic competitions and community outreach programs. Managed end-to-end project delivery, stakeholder coordination, and operational excellence across multiple concurrent initiatives.",
+    role: "Executive Treasurer | Volunteer Program Leader | Program Coordinator",
+    description: "Progressive leadership journey from volunteer leader to Program Coordinator to Executive Treasurer, reflecting consistent impact and leadership in youth initiatives. Oversaw budget and financial planning for youth programs and events, managing $10K+ in annual funds to ensure sustainable growth. Organized annual spelling bee and mentorship programs with 300+ participants, scaling event reach and engagement each year.",
     icon: "🌟",
-    impact: "5+ years progressive leadership, Board-level strategic oversight, Multi-event portfolio management"
+    impact: "5+ years progressive leadership, $10K+ annual budget management, 300+ participants in programs"
   },
   {
-    title: "Nilal Clothings",
-    organization: "Streetwear Brand",
-    role: "Co-Founder",
-    description: "Co-founded and scaled a minimalist streetwear brand targeting Gen Z and university demographics, driving end-to-end business operations from concept development to market launch. Led strategic brand positioning, creative direction, and go-to-market execution. Orchestrated comprehensive digital marketing campaigns including social media strategy, content development, and influencer partnerships, achieving organic growth across target student communities.",
-    icon: "📚",
-    impact: "2+ years entrepreneurial leadership, Full business lifecycle management, Digital marketing expertise, Target market expansion"
-  },
-  {
-    title: "Youth Volunteer Outreach",
+    title: "Youth Volunteer Outreach (YVO)",
     organization: "Non-Profit Organization",
-    role: "Founder & CEO",
-    description: "Established and scaled a student-led non-profit organization from inception, driving strategic initiatives across education, community care, and environmental sectors. Built and managed high-performing team of 20+ student organizers across multiple municipalities, orchestrating end-to-end program delivery including stakeholder engagement, partnership development, and operational execution.",
+    role: "Founder | CEO",
+    description: "Directed a team of 50+ volunteers, implementing scheduling automation to cut event coordination time by 35%. Organized fundraising and mentorship programs serving 500+ community members, increasing annual participation by 40%. Built digital infrastructure (Google Workspace + Microsoft Office + automation) to streamline internal communications.",
     icon: "💻",
-    impact: "3+ years entrepreneurial leadership, 20+ team members managed, Multi-city program expansion, Strategic partnership development"
+    impact: "50+ volunteers managed, 500+ community members served, 35% reduction in coordination time"
+  },
+  {
+    title: "Nilal Clothing - Custom Clothing Brand",
+    organization: "Streetwear Brand",
+    role: "Founder | CEO | Designer",
+    description: "Automated order tracking + sales reporting using Python + Google Sheets API → saved 10+ hrs/week. Managed end-to-end operations: supplier sourcing, logistics, and customer support. Optimized marketing campaigns through A/B testing and analytics-driven insights, increasing conversion rates by 15%.",
+    icon: "👕",
+    impact: "10+ hours saved weekly through automation, 15% increase in conversion rates, end-to-end operations"
   }
 ];
 
 export const goals = [
-  "Secure May 2026 Co-op/Internship opportunities at top-tier companies",
-  "Continue building production-grade automation systems and data pipelines",
-  "Develop expertise in distributed systems and fault tolerance",
-  "Expand quant research capabilities with advanced backtesting strategies",
-  "Scale impact through education and mentorship programs"
+  "Secure May 2026 Co-op/Internship opportunities in quantitative development and financial engineering",
+  "Continue building production-grade automation systems and quantitative trading platforms",
+  "Develop expertise in distributed systems, fault tolerance, and high-frequency trading systems",
+  "Expand quant research capabilities with advanced backtesting strategies and risk management",
+  "Master financial modeling, option pricing, and portfolio optimization techniques",
+  "Scale impact through education and mentorship programs in quantitative finance",
+  "Build comprehensive portfolio of automation tools, quant platforms, and financial models"
 ];
 
 export const timeline = [
   {
     year: "2025",
     events: [
-      "Started Automation Analyst role at RBC",
-      "Joined LB Connect as Software Engineer",
-      "Built Inbox-To-Insights AI Email Summarizer",
-      "Developed Quant Backtester Pro strategy engine"
+      "Automation Analyst at Royal Bank of Canada (May-Dec)",
+      "Software Engineer at LB Connect (July-Dec)",
+      "Built Options Trading Platform with Black-Scholes pricing",
+      "Developed Inbox-to-Insights AI Email Summarizer",
+      "Enhanced Quant Backtester Pro strategy engine",
+      "Implemented Monte Carlo simulation for option pricing"
+    ]
+  },
+
+  {
+    year: "2023",
+    events: [
+      "Software Analyst at Tremeng Inc. (May-Aug)",
+      "Founded Youth Volunteer Outreach (YVO)",
+      "Launched Nilal Clothing brand",
+      "Built automation tools with Python + APIs",
+      "Started quantitative finance self-study"
     ]
   },
   {
-    year: "2026",
+    year: "2018-2022",
     events: [
-      "Seeking May 2026 Co-op/Internship opportunities",
-      "Continue building production-grade systems",
-      "Expand quant research portfolio",
-      "Scale automation and data pipeline expertise"
-    ]
-  },
-  {
-    year: "2027-2028",
-    events: [
-      "Complete advanced coursework in C++ and OOP",
-      "Develop expertise in distributed systems",
-      "Build comprehensive portfolio of automation tools",
-      "Prepare for graduation and career opportunities"
+      "Started YPAM leadership journey",
+      "Began math tutoring career",
+      "Developed foundational programming skills",
+      "Established community leadership experience",
+      "Built strong mathematical foundation for quant work"
     ]
   },
   {
@@ -144,8 +169,12 @@ export const timeline = [
     events: [
       "Graduate with Bachelor of Technology in Chemical Engineering",
       "Complete Advanced Diploma and Business Certificate",
-      "Enter workforce with strong technical foundation",
-      "Continue building impact through automation and education"
+      "Enter workforce with strong technical and quantitative foundation",
+      "Continue building impact through automation, education, and quantitative finance",
+      "Pursue quantitative development roles at top financial institutions",
+      "Scale automation systems and quantitative trading platforms",
+      "Lead innovation in financial engineering and risk management",
+      "Build comprehensive portfolio of production-grade quant systems"
     ]
   }
 ];
@@ -159,11 +188,20 @@ export const personalInfo = {
   email: "surendrd@mcmaster.ca",
   github: "https://github.com/dinusanth12",
   linkedin: "https://linkedin.com/in/dinusanth-surendran",
-  interests: ["Backend Engineering", "Automation Systems", "Data Pipelines", "Quantitative Tools", "Production Systems"],
+  interests: ["Backend Engineering", "Automation Systems", "Data Pipelines", "Quantitative Tools", "Production Systems", "Quantitative Finance"],
   skills: {
-    "Languages": ["Python", "C++", "Java", "SQL", "JavaScript", "VBA"],
-    "Frameworks/Tools": ["Flask", "REST APIs", "Git", "Firebase", "Streamlit", "Notion API", "Matplotlib", "Pytest"],
-    "Systems": ["CI/CD Pipelines", "Docker", "Kubernetes", "Jenkins", "SAP Concur", "Outlook Automation"],
-    "Core Concepts": ["Distributed Systems", "Fault Tolerance", "Modular Architecture", "Unit Testing", "Load Testing"]
-  }
+    "Programming Languages": ["Python", "C++", "Java", "JavaScript", "SQL", "HTML/CSS"],
+    "Quantitative Libraries": ["Pandas", "NumPy", "SciPy", "Matplotlib", "Scikit-learn", "QuantLib"],
+    "Financial Tools": ["Black-Scholes", "Monte Carlo", "Option Greeks", "Portfolio Risk", "Sharpe Ratio", "Backtesting"],
+    "Development Tools": ["Git/GitHub", "Docker", "VS Code", "PyCharm", "Jupyter Notebooks"],
+    "Cloud & DevOps": ["AWS (EC2, S3)", "CI/CD Pipelines", "Windows"],
+    "Data Processing": ["ETL Pipelines", "Data Cleaning", "Feature Engineering", "Time Series Analysis", "Statistical Analysis"]
+  },
+  certificates: [
+    "Meta - Programming in Python",
+    "Meta - Introduction to Back-End Development",
+    "Meta - Version Control",
+    "Automate the Boring Stuff with Python Programming",
+    "Microsoft Excel – Excel Beginner to Advanced"
+  ]
 }; 

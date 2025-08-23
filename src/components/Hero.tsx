@@ -98,7 +98,7 @@ export default function Hero() {
               className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-steel-blue leading-relaxed mb-8 font-semibold"
             >
               <span className="text-royal-blue font-bold">{personalInfo.title}</span> with <span className="text-slate-blue font-bold">1+ years</span> building{" "}
-              <span className="text-slate-blue font-bold">production-grade systems</span>
+              <span className="text-slate-blue font-bold">quantitative trading platforms</span>
             </motion.p>
 
             {/* Description */}
@@ -112,7 +112,7 @@ export default function Hero() {
               <span className="text-royal-blue font-semibold">RBC</span> and{" "}
               <span className="text-royal-blue font-semibold">LB Connect</span> while building{" "}
               <span className="text-royal-blue font-semibold">quantitative tools</span> and{" "}
-              <span className="text-royal-blue font-semibold">FinTech solutions</span>.
+              <span className="text-royal-blue font-semibold">financial models</span>.
             </motion.p>
 
             {/* Location & Graduation */}
