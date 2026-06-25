@@ -251,6 +251,18 @@
     opacity: 0.5;
   }
   .hero .wrap { position: relative; z-index: 1; }
+  .hero-avatar {
+    width: clamp(92px, 11vw, 132px);
+    height: clamp(92px, 11vw, 132px);
+    border-radius: 9999px;
+    object-fit: cover;
+    margin-bottom: clamp(1.4rem, 3vw, 2rem);
+    border: 2px solid var(--accent);
+    padding: 3px;
+    background: var(--bg);
+    box-shadow: 0 0 0 1px rgba(255,255,255,.06), 0 18px 40px rgba(0,0,0,.45),
+      0 0 32px -6px var(--accent);
+  }
   .hero-eyebrow { margin-bottom: clamp(1.5rem, 3vw, 2.2rem); }
   .hero-name {
     font-family: var(--serif);
@@ -511,6 +523,7 @@
     <div class="hero-glow" aria-hidden="true"></div>
     <div class="hero-grid" aria-hidden="true"></div>
     <div class="wrap">
+      <img src="./profile.jpg" alt="Dinusanth Surendran" class="hero-avatar reveal" width="128" height="128" loading="eager" />
       <span class="eyebrow hero-eyebrow reveal">Software Developer · Toronto, ON</span>
       <h1 class="hero-name reveal" style="transition-delay:.05s">
         <span class="ln">Dinusanth</span>
