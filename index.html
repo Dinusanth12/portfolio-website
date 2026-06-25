@@ -251,17 +251,26 @@
     opacity: 0.5;
   }
   .hero .wrap { position: relative; z-index: 1; }
+  .hero-row {
+    display: flex;
+    align-items: center;
+    gap: clamp(1.4rem, 3.5vw, 2.6rem);
+  }
+  .hero-text { min-width: 0; }
   .hero-avatar {
-    width: clamp(92px, 11vw, 132px);
-    height: clamp(92px, 11vw, 132px);
+    flex-shrink: 0;
+    width: clamp(110px, 13vw, 168px);
+    height: clamp(110px, 13vw, 168px);
     border-radius: 9999px;
     object-fit: cover;
-    margin-bottom: clamp(1.4rem, 3vw, 2rem);
     border: 2px solid var(--accent);
     padding: 3px;
     background: var(--bg);
     box-shadow: 0 0 0 1px rgba(255,255,255,.06), 0 18px 40px rgba(0,0,0,.45),
       0 0 32px -6px var(--accent);
+  }
+  @media (max-width: 680px) {
+    .hero-row { flex-direction: column; align-items: flex-start; gap: 1.4rem; }
   }
   .hero-eyebrow { margin-bottom: clamp(1.5rem, 3vw, 2.2rem); }
   .hero-name {
@@ -523,7 +532,9 @@
     <div class="hero-glow" aria-hidden="true"></div>
     <div class="hero-grid" aria-hidden="true"></div>
     <div class="wrap">
+      <div class="hero-row">
       <img src="./profile.jpg" alt="Dinusanth Surendran" class="hero-avatar reveal" width="128" height="128" loading="eager" />
+      <div class="hero-text">
       <span class="eyebrow hero-eyebrow reveal">Software Developer · Toronto, ON</span>
       <h1 class="hero-name reveal" style="transition-delay:.05s">
         <span class="ln">Dinusanth</span>
@@ -542,6 +553,8 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
         <a href="#projects" class="btn btn-ghost" data-magnetic data-link>View projects</a>
+      </div>
+      </div>
       </div>
     </div>
     <div class="scroll-hint" aria-hidden="true">
