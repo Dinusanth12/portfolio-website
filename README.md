@@ -12,4 +12,23 @@ Drop this folder into Vercel or Netlify (drag-and-drop deploy) — no build step
 
 ## Résumé
 
-The "Download résumé" / footer "Résumé" buttons link to `./resume.pdf`. Add your real résumé as `resume.pdf` in this folder to enable the download.
+The "Download résumé" / footer "Résumé" buttons link to `./resume.pdf`. Add your real résumé as `resume.pdf` in this folder to enable the download. If the file isn't present, a small script HEAD-checks it on load and hides the download links instead of leaving a dead link.
+
+## Run locally
+
+No build step, no dependencies. Either:
+
+- Open `index.html` directly in a browser, or
+- Serve the folder so the résumé fetch check behaves like production: `npx serve .` (or `python -m http.server`) from this directory, then visit the printed localhost URL.
+
+## Status / version history
+
+Last updated: **2026-07-07**. Live at [dinusanth-portfolio.vercel.app](https://dinusanth-portfolio.vercel.app/), deployed from this repo via Vercel (static, no framework/build — see `vercel.json`).
+
+| Date | Change |
+| --- | --- |
+| 2026-07-07 | "Awwwards-level" pass: hero line-reveal + parallax, avatar orbit ring, scroll-drawn timeline with count-up metrics, skills marquee, 3D tilt/sheen project cards with a full-width featured NexLane card, mobile nav overlay, scroll-spy nav, copy-email toast, perf cleanup (single scroll listener/rAF) — still one static file |
+| 2026-06-25 | Avatar added to hero, placed side-by-side with name (responsive) |
+| 2026-06-24 | v2 rewrite: ink + emerald visual direction, updated résumé (RBC Capital Markets), NexLane added as a featured project, `vercel.json` added to force static deploy (fixes a Next.js auto-detection error on Vercel) |
+
+Everything ships as a single `index.html` — there is no package manager, dependency, or build tooling to keep current. "Version" here just means "state of that one file," tracked through normal commits.
