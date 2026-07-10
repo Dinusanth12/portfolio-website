@@ -721,7 +721,7 @@
     font-size: 0.88rem; font-weight: 500; color: var(--ink);
     background: var(--surface-2); border: 1px solid var(--line);
     padding: 0.4rem 0.85rem; border-radius: 8px;
-    transition: border-color 0.25s, color 0.25s, background 0.25s, transform 0.25s var(--ease);
+    transition: border-color 0.25s, color 0.25s, background 0.25s, transform 0.25s var(--ease), opacity 0.45s var(--ease);
   }
   .chip:hover {
     border-color: var(--accent); color: var(--accent);
@@ -866,11 +866,74 @@
   .projects-grid .card:hover .pills { transform: translateZ(12px); }
 
   /* ===========================================================
+     WORD-MASKED SECTION TITLES
+     (split into .wd/.wd-in spans by JS; armed under .js only,
+      revealed when the ancestor .reveal gets .in)
+     =========================================================== */
+  .js .section-title .wd {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: top;
+    padding-block: 0.1em;
+    margin-block: -0.1em;
+  }
+  .js .section-title .wd-in {
+    display: inline-block;
+    transform: translateY(115%);
+    transition: transform 0.65s var(--ease);
+    will-change: transform;
+  }
+  .js .reveal.in .section-title .wd-in { transform: none; }
+
+  /* ===========================================================
+     FLOATING PARALLAX ORBS (decorative accents; JS translates
+     them on scroll at per-orb data-speed rates)
+     =========================================================== */
+  /* Sections that host an orb clip it horizontally so the page never
+     grows layout overflow (clip ≠ hidden: no scroll container is made,
+     vertical overflow stays visible; older browsers safely ignore it
+     because body { overflow-x: hidden } already blocks actual panning) */
+  .has-orb { overflow-x: clip; }
+  .orb {
+    position: absolute;
+    z-index: -1;
+    pointer-events: none;
+    width: clamp(220px, 30vw, 420px);
+    height: clamp(220px, 30vw, 420px);
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--accent-glow), transparent 65%);
+    filter: blur(46px);
+    opacity: 0.45;
+    will-change: transform;
+  }
+
+  /* ===========================================================
+     CHIP / PILL / TAG POP-IN (staggered via JS transition delays,
+     cleared after the entrance so hovers stay instant)
+     =========================================================== */
+  .js .pill, .js .tag { transition: opacity 0.45s var(--ease), transform 0.45s var(--ease); }
+  .js .reveal .chip, .js .reveal .pill, .js .reveal .tag {
+    opacity: 0;
+    transform: translateY(10px) scale(0.9);
+  }
+  .js .reveal.in .chip, .js .reveal.in .pill, .js .reveal.in .tag {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Marquee skews slightly with scroll velocity (JS-driven) */
+  .marquee { will-change: transform; }
+
+  /* ===========================================================
      REDUCED MOTION — explicit kills for every new effect
      (JS-driven transforms are also guarded in the script)
      =========================================================== */
   @media (prefers-reduced-motion: reduce) {
     .hero-name .ln-inner { transform: none !important; animation: none !important; }
+    .js .section-title .wd-in { transform: none !important; transition: none !important; }
+    .js .reveal .chip, .js .reveal .pill, .js .reveal .tag { opacity: 1 !important; transform: none !important; }
+    .orb { display: none; }
+    .marquee { transform: none !important; }
     .avatar-ring { display: none; }
     .marquee { -webkit-mask-image: none; mask-image: none; }
     .marquee-inner { animation: none; width: auto; flex-wrap: wrap; }
@@ -975,7 +1038,8 @@
   </section>
 
   <!-- ============================ ABOUT ============================ -->
-  <section id="about">
+  <section id="about" class="has-orb">
+    <div class="orb" data-speed="0.14" style="top:6%; right:-8%;" aria-hidden="true"></div>
     <div class="wrap">
       <div class="section-head reveal">
         <span class="eyebrow">About</span>
@@ -1089,7 +1153,8 @@
   </section>
 
   <!-- ============================ PROJECTS ============================ -->
-  <section id="projects">
+  <section id="projects" class="has-orb">
+    <div class="orb" data-speed="0.1" style="top:10%; left:-10%;" aria-hidden="true"></div>
     <div class="wrap">
       <div class="section-head reveal">
         <span class="eyebrow">Projects</span>
@@ -1277,7 +1342,8 @@
   </section>
 
   <!-- ============================ CONTACT ============================ -->
-  <section id="contact" class="contact">
+  <section id="contact" class="contact has-orb">
+    <div class="orb" data-speed="0.16" style="bottom:0; right:6%;" aria-hidden="true"></div>
     <div class="wrap">
       <div class="reveal">
         <span class="eyebrow" style="justify-content:center;">Contact</span>
@@ -1392,6 +1458,91 @@
     });
   });
 
+  /* ---------- Section titles: word-masked reveal ----------
+     Splits each .section-title into .wd > .wd-in units (an <em> and any
+     trailing punctuation stay glued to their word). Skipped entirely
+     under reduced motion so the plain markup shows as-is. */
+  if (!prefersReduced) {
+    document.querySelectorAll(".section-title").forEach(function (title) {
+      var nodes = Array.prototype.slice.call(title.childNodes);
+      var frag = document.createDocumentFragment();
+      var lastUnit = null;
+      var makeUnit = function () {
+        var wd = document.createElement("span");
+        wd.className = "wd";
+        var inner = document.createElement("span");
+        inner.className = "wd-in";
+        wd.appendChild(inner);
+        frag.appendChild(wd);
+        lastUnit = inner;
+        return inner;
+      };
+      nodes.forEach(function (node) {
+        if (node.nodeType === 3) {
+          node.textContent.split(/(\s+)/).forEach(function (part) {
+            if (!part) { return; }
+            if (/^\s+$/.test(part)) {
+              frag.appendChild(document.createTextNode(" "));
+              lastUnit = null;
+            } else {
+              (lastUnit || makeUnit()).appendChild(document.createTextNode(part));
+            }
+          });
+        } else {
+          (lastUnit || makeUnit()).appendChild(node);
+        }
+      });
+      title.innerHTML = "";
+      title.appendChild(frag);
+      var i = 0;
+      title.querySelectorAll(".wd-in").forEach(function (w) {
+        w.style.transitionDelay = (0.08 + i * 0.07).toFixed(2) + "s";
+        i += 1;
+      });
+    });
+  }
+
+  /* ---------- Pop-in stagger for chips / pills / tags ---------- */
+  if (!prefersReduced) {
+    document.querySelectorAll(".chips, .pills, .tags").forEach(function (group) {
+      Array.prototype.forEach.call(group.children, function (item, i) {
+        item.style.transitionDelay = (0.12 + i * 0.04).toFixed(2) + "s";
+      });
+    });
+  }
+
+  /* ---------- Eyebrow decode (terminal-style settle) ---------- */
+  var DECODE_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#$%&";
+  var decodeEl = function (el) {
+    if (el.getAttribute("data-decoded")) { return; }
+    el.setAttribute("data-decoded", "true");
+    if (prefersReduced) { return; }
+    var original = el.textContent;
+    if (!original) { return; }
+    el.setAttribute("aria-label", original);
+    var start = null;
+    var step = function (ts) {
+      if (!start) { start = ts; }
+      var p = Math.min((ts - start) / 650, 1);
+      var lock = Math.floor(original.length * p);
+      var out = "";
+      for (var i = 0; i < original.length; i++) {
+        var ch = original.charAt(i);
+        out += (i < lock || !/[A-Za-z0-9]/.test(ch))
+          ? ch
+          : DECODE_CHARS.charAt(Math.floor(Math.random() * DECODE_CHARS.length));
+      }
+      el.textContent = out;
+      if (p < 1) {
+        window.requestAnimationFrame(step);
+      } else {
+        el.textContent = original;
+        el.removeAttribute("aria-label");
+      }
+    };
+    window.requestAnimationFrame(step);
+  };
+
   /* ---------- Metric count-ups ---------- */
   var easeOutExpo = function (p) { return p >= 1 ? 1 : 1 - Math.pow(2, -10 * p); };
   var runCounters = function (scope) {
@@ -1425,10 +1576,17 @@
             var el = entry.target;
             el.classList.add("in");
             runCounters(el);
+            if (el.classList.contains("eyebrow")) { decodeEl(el); }
+            else { el.querySelectorAll(".eyebrow").forEach(decodeEl); }
             io.unobserve(el);
-            /* Drop the stagger delay after the entrance so hover
-               transitions on cards/etc. respond instantly */
-            window.setTimeout(function () { el.style.transitionDelay = ""; }, 1300);
+            /* Drop the stagger delays after the entrance so hover
+               transitions on cards/chips/etc. respond instantly */
+            window.setTimeout(function () {
+              el.style.transitionDelay = "";
+              el.querySelectorAll(".chip, .pill, .tag").forEach(function (item) {
+                item.style.transitionDelay = "";
+              });
+            }, 1300);
           }
         });
       }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
@@ -1518,6 +1676,9 @@
   var heroGridEl = document.querySelector(".hero-grid");
   var scrollHint = document.querySelector(".scroll-hint");
   var timeline = document.querySelector(".timeline");
+  var orbs = document.querySelectorAll(".orb");
+  var marqueeEl = document.querySelector(".marquee");
+  var lastY = window.scrollY || window.pageYOffset || 0;
   var vh = window.innerHeight;
   var docH = 1;
   var measure = function () {
@@ -1526,6 +1687,23 @@
   };
   measure();
   if (timeline && !prefersReduced) { timeline.style.setProperty("--tl", "0"); }
+
+  /* Marquee scroll-velocity skew: target set from scroll delta,
+     a short self-terminating rAF loop eases it back to zero */
+  var marqueeSkew = { current: 0, target: 0, running: false };
+  var skewLoop = function () {
+    marqueeSkew.current += (marqueeSkew.target - marqueeSkew.current) * 0.12;
+    marqueeSkew.target *= 0.88;
+    if (Math.abs(marqueeSkew.current) < 0.04 && Math.abs(marqueeSkew.target) < 0.04) {
+      marqueeSkew.current = 0;
+      marqueeSkew.running = false;
+      if (marqueeEl) { marqueeEl.style.transform = ""; }
+      return;
+    }
+    if (marqueeEl) { marqueeEl.style.transform = "skewX(" + marqueeSkew.current.toFixed(2) + "deg)"; }
+    window.requestAnimationFrame(skewLoop);
+  };
+
   var ticking = false;
   var tick = function () {
     ticking = false;
@@ -1548,7 +1726,26 @@
         var p = (vh * 0.85 - rect.top) / (rect.height || 1);
         timeline.style.setProperty("--tl", Math.max(0, Math.min(1, p)).toFixed(3));
       }
+      /* Parallax orbs — measured off their (untransformed) parent section */
+      orbs.forEach(function (orb) {
+        var pr = orb.parentNode.getBoundingClientRect();
+        var speed = parseFloat(orb.getAttribute("data-speed")) || 0.1;
+        var mid = pr.top + pr.height / 2 - vh / 2;
+        orb.style.transform = "translate3d(0," + (-mid * speed).toFixed(1) + "px,0)";
+      });
+      /* Marquee skew from scroll velocity */
+      if (marqueeEl) {
+        var v = (y - lastY) * 0.06;
+        if (v) {
+          marqueeSkew.target = Math.max(-4, Math.min(4, v));
+          if (!marqueeSkew.running && Math.abs(marqueeSkew.target) > 0.1) {
+            marqueeSkew.running = true;
+            window.requestAnimationFrame(skewLoop);
+          }
+        }
+      }
     }
+    lastY = y;
   };
   var requestTick = function () {
     if (!ticking) { ticking = true; window.requestAnimationFrame(tick); }
@@ -1673,8 +1870,8 @@
     }
   }
 
-  /* ---------- Pause loops when the tab is hidden ---------- */
-  var marqueeEl = document.querySelector(".marquee");
+  /* ---------- Pause loops when the tab is hidden ----------
+     (marqueeEl is declared above with the scroll handler) */
   document.addEventListener("visibilitychange", function () {
     var hidden = document.hidden;
     if (marqueeEl) { marqueeEl.classList.toggle("paused", hidden); }

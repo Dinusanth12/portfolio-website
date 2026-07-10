@@ -23,10 +23,11 @@ No build step, no dependencies. Either:
 
 ## Status / version history
 
-Last updated: **2026-07-07**. Live at [dinusanth-portfolio.vercel.app](https://dinusanth-portfolio.vercel.app/), deployed from this repo via Vercel (static, no framework/build — see `vercel.json`).
+Last updated: **2026-07-10**. Live at [dinusanth-portfolio.vercel.app](https://dinusanth-portfolio.vercel.app/), deployed from this repo via Vercel (static, no framework/build — see `vercel.json`).
 
 | Date | Change |
 | --- | --- |
+| 2026-07-10 | Motion pass 2: word-masked section-title reveals, eyebrow "decode" settle, floating parallax orbs, staggered chip/pill/tag pop-ins, scroll-velocity marquee skew — all reduced-motion-safe. Merged to `main` so the 07-07 animation pass (which had only lived on a side branch) finally reaches production |
 | 2026-07-07 | "Awwwards-level" pass: hero line-reveal + parallax, avatar orbit ring, scroll-drawn timeline with count-up metrics, skills marquee, 3D tilt/sheen project cards with a full-width featured NexLane card, mobile nav overlay, scroll-spy nav, copy-email toast, perf cleanup (single scroll listener/rAF) — still one static file |
 | 2026-06-25 | Avatar added to hero, placed side-by-side with name (responsive) |
 | 2026-06-24 | v2 rewrite: ink + emerald visual direction, updated résumé (RBC Capital Markets), NexLane added as a featured project, `vercel.json` added to force static deploy (fixes a Next.js auto-detection error on Vercel) |
